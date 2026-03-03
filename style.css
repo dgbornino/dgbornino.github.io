@@ -1,0 +1,163 @@
+/* ========================= */
+/* Reset */
+/* ========================= */
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+/* ========================= */
+/* Background */
+/* ========================= */
+
+.bg {
+  position: fixed;
+  inset: 0;
+  background-image: url("images/deceived_1_sp.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: contrast(1.15) saturate(1.05);
+  z-index: 0;
+}
+
+/* Reduced overlay (lighter for more contrast) */
+.bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.15);  /* was 0.35 */
+}
+
+/* ========================= */
+/* Base */
+/* ========================= */
+
+body {
+  color: #39ff14; /* neon green */
+}
+
+/* ========================= */
+/* Centered Layout */
+/* ========================= */
+
+.wrap {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+  padding: 20px;
+}
+
+/* ========================= */
+/* Main Name (Mono + Bold) */
+/* ========================= */
+
+.name {
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  font-size: clamp(36px, 6vw, 70px);
+  letter-spacing: 0.5px;
+  transform: translateY(-22px);
+  text-shadow: 0 0 12px rgba(57,255,20,0.4);
+}
+
+/* ========================= */
+/* Email */
+/* ========================= */
+
+.email {
+  margin-top: 18px;
+
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+
+  color: #39ff14;
+  text-decoration: none;
+  transform: translateY(22px);
+
+  transition: color 0.2s ease;
+}
+
+.email:hover {
+  color: #c300ff; /* neon purple */
+}
+
+/* ========================= */
+/* Copyright */
+/* ========================= */
+
+.copyright {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 18px;
+
+  z-index: 1;
+  text-align: center;
+
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+
+  opacity: 0.9;
+}
+
+/* ========================= */
+/* Mobile */
+/* ========================= */
+
+@media (max-width: 768px) {
+  .name {
+    font-size: clamp(28px, 7vw, 44px);
+    transform: translateY(-16px);
+  }
+
+  .email {
+    font-size: 13px;
+    transform: translateY(16px);
+  }
+
+  .copyright {
+    bottom: 14px;
+    font-size: 12px;
+  }
+}
+
+/* ========================= */
+/* Landscape phones */
+/* ========================= */
+
+@media (max-width: 932px) and (orientation: landscape) {
+  .name {
+    font-size: clamp(24px, 5vw, 40px);
+    transform: translateY(-10px);
+  }
+
+  .email {
+    font-size: 12px;
+    transform: translateY(10px);
+  }
+
+  .copyright {
+    bottom: 10px;
+    font-size: 12px;
+  }
+}
+
+
+
+
+
+
