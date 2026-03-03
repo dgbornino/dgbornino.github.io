@@ -1,7 +1,6 @@
 /* ========================= */
 /* Reset */
 /* ========================= */
-
 * { box-sizing: border-box; }
 
 html, body {
@@ -13,7 +12,6 @@ html, body {
 /* ========================= */
 /* Background */
 /* ========================= */
-
 .bg {
   position: fixed;
   inset: 0;
@@ -25,57 +23,59 @@ html, body {
   z-index: 0;
 }
 
-/* Reduced overlay (lighter for more contrast) */
 .bg::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.15);  /* was 0.35 */
+  background: rgba(0,0,0,0.15);
 }
 
 /* ========================= */
 /* Base */
 /* ========================= */
-
 body {
   color: #39ff14; /* neon green */
 }
 
 /* ========================= */
 /* Centered Layout */
+/* - Real vertical centering (no transforms) */
+/* - Footer stays at bottom */
 /* ========================= */
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 
 .wrap {
   position: relative;
   z-index: 1;
-  min-height: 100vh;
 
+  flex: 1;                    /* takes remaining height */
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: center;    /* vertical center */
 
   text-align: center;
   padding: 20px;
 }
 
 /* ========================= */
-/* Main Name (Mono + Bold) */
+/* Main Name */
 /* ========================= */
-
 .name {
   font-family: "Courier New", Courier, monospace;
   font-weight: 600;
   font-size: clamp(36px, 6vw, 42px);
   letter-spacing: 1px;
-  transform: translateY(-22px);
   text-shadow: 0 0 12px rgba(57,255,20,0.4);
 }
 
 /* ========================= */
 /* Email */
 /* ========================= */
-
 .email {
   margin-top: 18px;
 
@@ -85,7 +85,6 @@ body {
 
   color: #39ff14;
   text-decoration: none;
-  transform: translateY(22px);
 
   transition: color 0.2s ease;
 }
@@ -97,15 +96,12 @@ body {
 /* ========================= */
 /* Copyright */
 /* ========================= */
-
 .copyright {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 18px;
-
+  position: relative;         /* no fixed positioning */
   z-index: 1;
   text-align: center;
+
+  padding: 0 20px 18px;
 
   font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
   font-size: 14px;
@@ -117,20 +113,17 @@ body {
 /* ========================= */
 /* Mobile */
 /* ========================= */
-
 @media (max-width: 768px) {
   .name {
     font-size: clamp(28px, 7vw, 44px);
-    transform: translateY(-16px);
   }
 
   .email {
     font-size: 13px;
-    transform: translateY(16px);
   }
 
   .copyright {
-    bottom: 14px;
+    padding-bottom: 14px;
     font-size: 12px;
   }
 }
@@ -138,27 +131,17 @@ body {
 /* ========================= */
 /* Landscape phones */
 /* ========================= */
-
 @media (max-width: 932px) and (orientation: landscape) {
   .name {
     font-size: clamp(24px, 5vw, 40px);
-    transform: translateY(-10px);
   }
 
   .email {
     font-size: 12px;
-    transform: translateY(10px);
   }
 
   .copyright {
-    bottom: 10px;
+    padding-bottom: 10px;
     font-size: 12px;
   }
 }
-
-
-
-
-
-
-
