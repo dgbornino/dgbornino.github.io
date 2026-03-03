@@ -7,7 +7,7 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow: hidden; /* avoids scrollbar-centering mismatch */
+  overflow: hidden; /* prevents scrollbar causing off-center */
 }
 
 /* ========================= */
@@ -39,11 +39,11 @@ body {
 }
 
 /* ========================= */
-/* Full-screen centering */
+/* Main layout: PERFECT center */
 /* ========================= */
 .wrap {
   position: fixed;
-  inset: 0;
+  inset: 0;           /* full viewport */
   z-index: 1;
 
   display: flex;
@@ -54,7 +54,7 @@ body {
   padding: 20px;
 }
 
-/* Inner block (single centered unit) */
+/* Single centered block */
 .center {
   display: flex;
   flex-direction: column;
@@ -63,7 +63,7 @@ body {
 }
 
 /* ========================= */
-/* Main Name */
+/* Name */
 /* ========================= */
 .name {
   font-family: "Courier New", Courier, monospace;
@@ -90,11 +90,11 @@ body {
 }
 
 .email:hover {
-  color: #c300ff;
+  color: #c300ff; /* neon purple */
 }
 
 /* ========================= */
-/* Copyright */
+/* Footer: ALWAYS centered */
 /* ========================= */
 .copyright {
   position: fixed;
