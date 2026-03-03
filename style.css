@@ -35,28 +35,23 @@ html, body {
 /* ========================= */
 body {
   color: #39ff14; /* neon green */
-}
-
-/* ========================= */
-/* Centered Layout */
-/* - Real vertical centering (no transforms) */
-/* - Footer stays at bottom */
-/* ========================= */
-body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
+/* ========================= */
+/* Centered Layout */
+/* ========================= */
 .wrap {
   position: relative;
   z-index: 1;
 
-  flex: 1;                    /* takes remaining height */
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;    /* vertical center */
+  justify-content: center;
 
   text-align: center;
   padding: 20px;
@@ -66,7 +61,7 @@ body {
 /* Main Name */
 /* ========================= */
 .name {
-  font-family: "Courier New", Courier, monospace;
+  font-family: "Courier New", Courier, monospace; /* currently active */
   font-weight: 600;
   font-size: clamp(36px, 6vw, 42px);
   letter-spacing: 1px;
@@ -85,19 +80,18 @@ body {
 
   color: #39ff14;
   text-decoration: none;
-
   transition: color 0.2s ease;
 }
 
 .email:hover {
-  color: #c300ff; /* neon purple */
+  color: #c300ff;
 }
 
 /* ========================= */
 /* Copyright */
 /* ========================= */
 .copyright {
-  position: relative;         /* no fixed positioning */
+  position: relative;
   z-index: 1;
   text-align: center;
 
