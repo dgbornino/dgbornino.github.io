@@ -68,8 +68,8 @@ body {
 /* ========================= */
 
 .name {
-  font-family: "Courier New", Courier, monospace;
-  font-weight: 600;
+  font-family: "Special Elite", monospace;
+  font-weight: 400;
   font-size: clamp(36px, 6vw, 42px);
   letter-spacing: 1px;
   line-height: 1;
@@ -142,4 +142,5 @@ body {
     font-size: 12px;
   }
 }
+
 
