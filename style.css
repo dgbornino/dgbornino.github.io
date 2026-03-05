@@ -124,9 +124,8 @@ body {
   }
 
   /* On desktop we’ll position these via JS */
-  .name { position: fixed; left: 0; bottom: 0; transform: none; }
-  .copyright { position: fixed; right: 0; bottom: 0; left: auto; transform: none; text-align: right; }
-}
+  .name { position: fixed; left: 0; top: 0; }
+  .copyright { position: fixed; right: 0; top: 0; }
 
 /* ========================= */
 /* Mobile portrait: fullscreen image (crop ok) */
@@ -173,3 +172,4 @@ body {
     font-size: 12px;
   }
 }
+
