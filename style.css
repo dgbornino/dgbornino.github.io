@@ -21,7 +21,7 @@ html, body {
 
   background-color: #000; /* black bars around image */
 
-  background-image: url("images/deceived_1_sp.jpg");
+  background-image: url("images/dani_b_1.jpg");
   background-size: contain;   /* full image always visible */
   background-position: center;
   background-repeat: no-repeat;
@@ -142,6 +142,7 @@ body {
     font-size: 12px;
   }
 }
+
 
 
 
