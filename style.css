@@ -21,7 +21,7 @@ html, body {
 
   background-color: #000; /* black bars around image */
 
-  background-image: url("images/sdl_2.jpg");
+  background-image: url("images/deceived_2_sp.jpg");
   background-size: contain;   /* full image always visible */
   background-position: center;
   background-repeat: no-repeat;
@@ -142,3 +142,4 @@ body {
     font-size: 12px;
   }
 }
+
