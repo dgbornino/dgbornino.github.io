@@ -14,15 +14,14 @@ html, body {
 /* ========================= */
 /* Background */
 /* ========================= */
-
 .bg {
   position: fixed;
   inset: 0;
 
-  background-color: #000; /* black bars around image */
-
+  background-color: #000;
   background-image: url("images/deceived_1_sp.jpg");
-  background-size: contain;   /* full image always visible */
+
+  background-size: calc(100% - 160px) calc(100% - 160px);
   background-position: center;
   background-repeat: no-repeat;
 
@@ -117,6 +116,10 @@ body {
 
 @media (max-width: 768px) {
 
+  .bg {
+    background-size: cover;
+  }
+
   .name {
     font-size: clamp(28px, 7vw, 44px);
   }
@@ -133,6 +136,9 @@ body {
 
 @media (max-width: 932px) and (orientation: landscape) {
 
+  .bg {
+  background-size: cover;
+}
   .name {
     font-size: clamp(24px, 5vw, 40px);
   }
@@ -142,6 +148,7 @@ body {
     font-size: 12px;
   }
 }
+
 
 
 
