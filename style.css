@@ -44,23 +44,23 @@ html, body {
 /* ========================= */
 
 body {
-  color: #39ff14;
+  color: #39ff14; /* neon green */
 }
 
 /* ========================= */
-/* Layout */
+/* Foreground layout (mobile default = centered) */
 /* ========================= */
 
 .wrap {
   position: fixed;
   inset: 0;
+  z-index: 1;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   text-align: center;
-  z-index: 1;
 }
 
 .center {
@@ -85,19 +85,11 @@ body {
   cursor: pointer;
 
   text-shadow: 0 0 12px rgba(57,255,20,0.4);
-
   transition: color 0.2s ease;
-
-  opacity: 0; /* hidden until positioned */
 }
 
-.name:hover {
-  color: #ff00e6;
-}
-
-.name:visited {
-  color: #39ff14;
-}
+.name:hover { color: #ff00e6; }
+.name:visited { color: #39ff14; }
 
 /* ========================= */
 /* Footer */
@@ -108,29 +100,40 @@ body {
   bottom: 18px;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 1;
 
   text-align: center;
 
   font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
   font-size: 14px;
   font-weight: 600;
+  opacity: 0.9;
 
   color: #ffffff;
-
-  opacity: 0; /* hidden until positioned */
-
-  z-index: 1;
 }
 
 /* ========================= */
-/* Mobile portrait */
+/* Desktop: hide text until JS positions it */
+/* ========================= */
+
+@media (min-width: 769px) {
+  .name,
+  .copyright {
+    opacity: 0;                 /* prevents the “jump” */
+    will-change: left, right, bottom, opacity;
+  }
+
+  /* On desktop we’ll position these via JS */
+  .name { position: fixed; left: 0; bottom: 0; transform: none; }
+  .copyright { position: fixed; right: 0; bottom: 0; left: auto; transform: none; text-align: right; }
+}
+
+/* ========================= */
+/* Mobile portrait: fullscreen image (crop ok) */
 /* ========================= */
 
 @media (max-width: 768px) {
-
-  .bg {
-    display: block;
-  }
+  .bg { display: block; }
 
   .bgimg {
     width: 100vw;
@@ -140,26 +143,20 @@ body {
     object-fit: cover;
   }
 
-  .name {
-    font-size: clamp(20px, 6vw, 28px);
-  }
+  .name { font-size: clamp(20px, 6vw, 28px); }
 
   .copyright {
     bottom: 14px;
     font-size: 12px;
   }
-
 }
 
 /* ========================= */
-/* Mobile landscape */
+/* Mobile landscape: fullscreen image (crop ok) */
 /* ========================= */
 
 @media (max-width: 932px) and (orientation: landscape) {
-
-  .bg {
-    display: block;
-  }
+  .bg { display: block; }
 
   .bgimg {
     width: 100vw;
@@ -169,13 +166,10 @@ body {
     object-fit: cover;
   }
 
-  .name {
-    font-size: clamp(18px, 5vw, 24px);
-  }
+  .name { font-size: clamp(18px, 5vw, 24px); }
 
   .copyright {
     bottom: 10px;
     font-size: 12px;
   }
-
 }
