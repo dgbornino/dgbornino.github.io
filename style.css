@@ -68,8 +68,8 @@ body {
 /* ========================= */
 
 .name {
-  font-family: "Special Elite", monospace;
-  font-weight: 400;
+  font-family: "Courier Prime", monospace;
+  font-weight: 700;
   font-size: clamp(36px, 6vw, 42px);
   letter-spacing: 1px;
   line-height: 1;
@@ -142,6 +142,7 @@ body {
     font-size: 12px;
   }
 }
+
 
 
 
