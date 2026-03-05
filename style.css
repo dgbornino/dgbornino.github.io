@@ -84,7 +84,7 @@ body {
 }
 
 .name:hover {
-  color: #c300ff; /* neon purple */
+  color: #ff00e6; /* neon purple */
 }
 
 .name:visited {
@@ -142,6 +142,7 @@ body {
     font-size: 12px;
   }
 }
+
 
 
 
