@@ -162,6 +162,11 @@ body {
 
   .name {
     font-size: clamp(20px, 6vw, 28px);
+    color: #39ff14;
+  }
+  
+  .name:hover {
+    color: #ff00e6;
   }
 
   .copyright {
@@ -188,6 +193,11 @@ body {
 
   .name {
     font-size: clamp(18px, 5vw, 24px);
+    color: #39ff14;
+  }
+  
+  .name:hover {
+    color: #ff00e6;
   }
 
   .copyright {
@@ -195,3 +205,4 @@ body {
     font-size: 12px;
   }
 }
+
