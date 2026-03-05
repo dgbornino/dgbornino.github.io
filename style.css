@@ -1,13 +1,14 @@
 /* ========================= */
 /* Reset */
 /* ========================= */
+
 * { box-sizing: border-box; }
 
 html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow: hidden; /* prevents scrollbar causing off-center */
+  overflow: hidden;
 }
 
 /* ========================= */
@@ -18,10 +19,10 @@ html, body {
   position: fixed;
   inset: 0;
 
-  background-color: #000; /* always black behind image */
+  background-color: #000; /* black bars around image */
 
-  background-image: url("images/deceived_1_sp.jpg");
-  background-size: contain;   /* show full image */
+  background-image: url("images/sdl_2.jpg");
+  background-size: contain;   /* full image always visible */
   background-position: center;
   background-repeat: no-repeat;
 
@@ -30,37 +31,31 @@ html, body {
   z-index: 0;
 }
 
-.bg::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.15);
-}
-
 /* ========================= */
 /* Base */
 /* ========================= */
+
 body {
   color: #39ff14; /* neon green */
 }
 
 /* ========================= */
-/* Main layout: PERFECT center */
+/* Perfect Center Layout */
 /* ========================= */
+
 .wrap {
   position: fixed;
-  inset: 0;           /* full viewport */
+  inset: 0;
   z-index: 1;
 
   display: flex;
-  align-items: center;     /* vertical center */
-  justify-content: center; /* horizontal center */
+  align-items: center;
+  justify-content: center;
 
   text-align: center;
   padding: 20px;
 }
 
-/* Single centered block */
 .center {
   display: flex;
   flex-direction: column;
@@ -69,26 +64,37 @@ body {
 }
 
 /* ========================= */
-/* Name */
+/* Main Name (mail link) */
 /* ========================= */
+
 .name {
   font-family: "Courier New", Courier, monospace;
   font-weight: 600;
-  font-size: clamp(24px, 6vw, 24px);
+  font-size: clamp(36px, 6vw, 42px);
   letter-spacing: 1px;
   line-height: 1;
 
   color: #39ff14;
   text-decoration: none;
+  cursor: pointer;
 
   text-shadow: 0 0 12px rgba(57,255,20,0.4);
 
   transition: color 0.2s ease;
 }
 
+.name:hover {
+  color: #c300ff; /* neon purple */
+}
+
+.name:visited {
+  color: #39ff14;
+}
+
 /* ========================= */
-/* Footer: ALWAYS centered */
+/* Footer */
 /* ========================= */
+
 .copyright {
   position: fixed;
   bottom: 18px;
@@ -108,22 +114,31 @@ body {
 /* ========================= */
 /* Mobile */
 /* ========================= */
+
 @media (max-width: 768px) {
-  .name { font-size: clamp(28px, 7vw, 44px); }
-  .email { font-size: 13px; }
-  .copyright { bottom: 14px; font-size: 12px; }
+
+  .name {
+    font-size: clamp(28px, 7vw, 44px);
+  }
+
+  .copyright {
+    bottom: 14px;
+    font-size: 12px;
+  }
 }
 
 /* ========================= */
 /* Landscape phones */
 /* ========================= */
+
 @media (max-width: 932px) and (orientation: landscape) {
-  .name { font-size: clamp(24px, 5vw, 40px); }
-  .email { font-size: 12px; }
-  .copyright { bottom: 10px; font-size: 12px; }
+
+  .name {
+    font-size: clamp(24px, 5vw, 40px);
+  }
+
+  .copyright {
+    bottom: 10px;
+    font-size: 12px;
+  }
 }
-
-
-
-
-
