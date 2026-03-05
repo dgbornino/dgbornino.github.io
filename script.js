@@ -1,6 +1,4 @@
-// script.js
-
-const GAP_PX = 8; // <<< CHANGE THIS to control distance from image bottom (e.g. 4, 8, 12, 16)
+const GAP_PX = 4; // distance between image and text
 
 function isDesktop() {
   return window.innerWidth >= 769;
@@ -12,6 +10,7 @@ function setYear() {
 }
 
 function positionDesktopText() {
+
   if (!isDesktop()) return;
 
   const img = document.querySelector(".bgimg");
@@ -22,25 +21,25 @@ function positionDesktopText() {
 
   const rect = img.getBoundingClientRect();
 
-  // Align to image edges
-  name.style.left = `${rect.left}px`;
-  name.style.bottom = `${(window.innerHeight - rect.bottom + GAP_PX)}px`;
+  /* left text */
+  name.style.left = rect.left + "px";
+  name.style.top = rect.bottom + GAP_PX + "px";
 
-  copyright.style.right = `${(window.innerWidth - rect.right)}px`;
-  copyright.style.bottom = `${(window.innerHeight - rect.bottom + GAP_PX)}px`;
+  /* right text */
+  copyright.style.right = (window.innerWidth - rect.right) + "px";
+  copyright.style.top = rect.bottom + GAP_PX + "px";
 
-  // Reveal ONLY after positioned (no jump)
   name.style.opacity = "1";
   copyright.style.opacity = "1";
 }
 
 function initDesktopAlignment() {
+
   if (!isDesktop()) return;
 
   const img = document.querySelector(".bgimg");
   if (!img) return;
 
-  // Run once image is ready
   const run = () => requestAnimationFrame(positionDesktopText);
 
   if (img.complete) {
@@ -48,20 +47,17 @@ function initDesktopAlignment() {
   } else {
     img.addEventListener("load", run, { once: true });
   }
+
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+
   setYear();
 
-  // Mobile: do nothing (CSS keeps centered text and it’s visible)
   if (!isDesktop()) return;
 
   initDesktopAlignment();
+
 });
 
-// Keep it aligned if the window changes
-window.addEventListener("resize", () => {
-  if (!isDesktop()) return;
-  positionDesktopText();
-});
-
+window.addEventListener("resize", positionDesktopText);
