@@ -7,10 +7,19 @@ function alignTextToImage() {
   if (!img || !name || !copyright) return;
 
   const rect = img.getBoundingClientRect();
+  const offset = 8;
 
+  // Align left text to image edge
   name.style.left = rect.left + "px";
-  copyright.style.right = (window.innerWidth - rect.right) + "px";
+  name.style.bottom = (window.innerHeight - rect.bottom + offset) + "px";
 
+  // Align right text to image edge
+  copyright.style.right = (window.innerWidth - rect.right) + "px";
+  copyright.style.bottom = (window.innerHeight - rect.bottom + offset) + "px";
+
+  // Reveal text after positioning
+  name.style.opacity = 1;
+  copyright.style.opacity = 1;
 }
 
 function initAlignment() {
@@ -19,23 +28,21 @@ function initAlignment() {
 
   if (!img) return;
 
-  // if image already cached
   if (img.complete) {
     alignTextToImage();
   } else {
-    img.onload = alignTextToImage;
+    img.addEventListener("load", alignTextToImage);
   }
 
 }
 
-// run after DOM loads
-document.addEventListener("DOMContentLoaded", initAlignment);
-
-// adjust on resize
-window.addEventListener("resize", alignTextToImage);
-
-// update copyright year
 document.addEventListener("DOMContentLoaded", () => {
+
   const year = document.getElementById("year");
   if (year) year.textContent = new Date().getFullYear();
+
+  initAlignment();
+
 });
+
+window.addEventListener("resize", alignTextToImage);
