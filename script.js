@@ -1,4 +1,10 @@
+function isDesktop() {
+  return window.innerWidth >= 769;
+}
+
 function alignTextToImage() {
+
+  if (!isDesktop()) return;
 
   const img = document.querySelector(".bgimg");
   const name = document.querySelector(".name");
@@ -9,20 +15,23 @@ function alignTextToImage() {
   const rect = img.getBoundingClientRect();
   const offset = 8;
 
-  // Align left text to image edge
   name.style.left = rect.left + "px";
   name.style.bottom = (window.innerHeight - rect.bottom + offset) + "px";
 
-  // Align right text to image edge
   copyright.style.right = (window.innerWidth - rect.right) + "px";
   copyright.style.bottom = (window.innerHeight - rect.bottom + offset) + "px";
 
-  // Reveal text after positioning
   name.style.opacity = 1;
   copyright.style.opacity = 1;
 }
 
 function initAlignment() {
+
+  if (!isDesktop()) {
+    document.querySelector(".name").style.opacity = 1;
+    document.querySelector(".copyright").style.opacity = 1;
+    return;
+  }
 
   const img = document.querySelector(".bgimg");
 
