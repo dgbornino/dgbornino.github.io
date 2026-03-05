@@ -1,9 +1,17 @@
+// script.js
+
+const GAP_PX = 4; // <<< CHANGE THIS to control distance from image bottom (e.g. 4, 8, 12, 16)
+
 function isDesktop() {
   return window.innerWidth >= 769;
 }
 
-function alignTextToImage() {
+function setYear() {
+  const year = document.getElementById("year");
+  if (year) year.textContent = new Date().getFullYear();
+}
 
+function positionDesktopText() {
   if (!isDesktop()) return;
 
   const img = document.querySelector(".bgimg");
@@ -13,45 +21,46 @@ function alignTextToImage() {
   if (!img || !name || !copyright) return;
 
   const rect = img.getBoundingClientRect();
-  const offset = 8;
 
-  name.style.left = rect.left + "px";
-  name.style.bottom = (window.innerHeight - rect.bottom + offset) + "px";
+  // Align to image edges
+  name.style.left = `${rect.left}px`;
+  name.style.bottom = `${(window.innerHeight - rect.bottom + GAP_PX)}px`;
 
-  copyright.style.right = (window.innerWidth - rect.right) + "px";
-  copyright.style.bottom = (window.innerHeight - rect.bottom + offset) + "px";
+  copyright.style.right = `${(window.innerWidth - rect.right)}px`;
+  copyright.style.bottom = `${(window.innerHeight - rect.bottom + GAP_PX)}px`;
 
-  name.style.opacity = 1;
-  copyright.style.opacity = 1;
+  // Reveal ONLY after positioned (no jump)
+  name.style.opacity = "1";
+  copyright.style.opacity = "1";
 }
 
-function initAlignment() {
-
-  if (!isDesktop()) {
-    document.querySelector(".name").style.opacity = 1;
-    document.querySelector(".copyright").style.opacity = 1;
-    return;
-  }
+function initDesktopAlignment() {
+  if (!isDesktop()) return;
 
   const img = document.querySelector(".bgimg");
-
   if (!img) return;
 
-  if (img.complete) {
-    alignTextToImage();
-  } else {
-    img.addEventListener("load", alignTextToImage);
-  }
+  // Run once image is ready
+  const run = () => requestAnimationFrame(positionDesktopText);
 
+  if (img.complete) {
+    run();
+  } else {
+    img.addEventListener("load", run, { once: true });
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  setYear();
 
-  const year = document.getElementById("year");
-  if (year) year.textContent = new Date().getFullYear();
+  // Mobile: do nothing (CSS keeps centered text and it’s visible)
+  if (!isDesktop()) return;
 
-  initAlignment();
-
+  initDesktopAlignment();
 });
 
-window.addEventListener("resize", alignTextToImage);
+// Keep it aligned if the window changes
+window.addEventListener("resize", () => {
+  if (!isDesktop()) return;
+  positionDesktopText();
+});
