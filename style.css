@@ -16,7 +16,7 @@ html, body {
 .bg {
   position: fixed;
   inset: 0;
-  background-image: url("images/tdftww_1.jpg");
+  background-image: url("images/sdl_2.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -129,4 +129,5 @@ body {
   .email { font-size: 12px; }
   .copyright { bottom: 10px; font-size: 12px; }
 }
+
 
