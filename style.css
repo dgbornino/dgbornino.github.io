@@ -13,14 +13,20 @@ html, body {
 /* ========================= */
 /* Background */
 /* ========================= */
+
 .bg {
   position: fixed;
   inset: 0;
+
+  background-color: #000; /* always black behind image */
+
   background-image: url("images/sdl_2.jpg");
-  background-size: cover;
+  background-size: contain;   /* show full image */
   background-position: center;
   background-repeat: no-repeat;
+
   filter: contrast(1.15) saturate(1.05);
+
   z-index: 0;
 }
 
@@ -129,5 +135,6 @@ body {
   .email { font-size: 12px; }
   .copyright { bottom: 10px; font-size: 12px; }
 }
+
 
 
