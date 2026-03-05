@@ -27,6 +27,7 @@ html, body {
   z-index: 0;
 }
 
+/* Desktop: framed image (museum frame) */
 .bgimg {
   max-width: calc(100vw - 8vw);
   max-height: calc(100vh - 8vh);
@@ -44,11 +45,11 @@ html, body {
 /* ========================= */
 
 body {
-  color: #39ff14; /* neon green */
+  color: #ffffff; /* white */
 }
 
 /* ========================= */
-/* Foreground layout (mobile default = centered) */
+/* Foreground layout (MOBILE DEFAULT) */
 /* ========================= */
 
 .wrap {
@@ -70,17 +71,17 @@ body {
 }
 
 /* ========================= */
-/* Name */
+/* Name (mail link) */
 /* ========================= */
 
 .name {
   font-family: "Courier Prime", monospace;
-  font-weight: 700;
+  font-weight: 600;
   font-size: clamp(18px, 5vw, 32px);
   letter-spacing: 1px;
   line-height: 1;
 
-  color: #39ff14;
+  color: #ffffff;
   text-decoration: none;
   cursor: pointer;
 
@@ -88,11 +89,11 @@ body {
   transition: color 0.2s ease;
 }
 
-.name:hover { color: #ff00e6; }
-.name:visited { color: #39ff14; }
+.name:hover { color: #ff99c0; }
+.name:visited { color: #ffffff; }
 
 /* ========================= */
-/* Footer */
+/* Copyright */
 /* ========================= */
 
 .copyright {
@@ -109,29 +110,46 @@ body {
   font-weight: 600;
   opacity: 0.9;
 
-  color: #ffffff;
+  color: #ffffff; /* always white */
 }
 
 /* ========================= */
-/* Desktop: hide text until JS positions it */
+/* Desktop: JS-positioned text (NO JUMP) */
 /* ========================= */
 
 @media (min-width: 769px) {
+
+  /* Hide until JS positions them */
   .name,
   .copyright {
-    opacity: 0;                 /* prevents the “jump” */
-    will-change: left, right, bottom, opacity;
+    opacity: 0;
+    will-change: left, right, top, opacity;
   }
 
-  /* On desktop we’ll position these via JS */
-  .name { position: fixed; left: 0; top: 0; }
-  .copyright { position: fixed; right: 0; top: 0; }
+  /* Desktop will be positioned by JS using top + left/right */
+  .name {
+    position: fixed;
+    left: 0;
+    top: 0;
+    transform: none;
+  }
+
+  .copyright {
+    position: fixed;
+    right: 0;
+    top: 0;
+    left: auto;
+    transform: none;
+    text-align: right;
+  }
+}
 
 /* ========================= */
-/* Mobile portrait: fullscreen image (crop ok) */
+/* Mobile portrait: fullscreen background image */
 /* ========================= */
 
 @media (max-width: 768px) {
+
   .bg { display: block; }
 
   .bgimg {
@@ -139,10 +157,12 @@ body {
     height: 100vh;
     max-width: none;
     max-height: none;
-    object-fit: cover;
+    object-fit: cover; /* fullscreen, may crop */
   }
 
-  .name { font-size: clamp(20px, 6vw, 28px); }
+  .name {
+    font-size: clamp(20px, 6vw, 28px);
+  }
 
   .copyright {
     bottom: 14px;
@@ -151,10 +171,11 @@ body {
 }
 
 /* ========================= */
-/* Mobile landscape: fullscreen image (crop ok) */
+/* Mobile landscape: fullscreen background image */
 /* ========================= */
 
 @media (max-width: 932px) and (orientation: landscape) {
+
   .bg { display: block; }
 
   .bgimg {
@@ -165,11 +186,12 @@ body {
     object-fit: cover;
   }
 
-  .name { font-size: clamp(18px, 5vw, 24px); }
+  .name {
+    font-size: clamp(18px, 5vw, 24px);
+  }
 
   .copyright {
     bottom: 10px;
     font-size: 12px;
   }
 }
-
