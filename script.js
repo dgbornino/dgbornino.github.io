@@ -1,4 +1,4 @@
-const GAP_PX = 4; // distance between image and text
+const GAP_PX = 8; // distance between image bottom and text (change this)
 
 function isDesktop() {
   return window.innerWidth >= 769;
@@ -10,31 +10,28 @@ function setYear() {
 }
 
 function positionDesktopText() {
-
   if (!isDesktop()) return;
 
   const img = document.querySelector(".bgimg");
   const name = document.querySelector(".name");
   const copyright = document.querySelector(".copyright");
-
   if (!img || !name || !copyright) return;
 
   const rect = img.getBoundingClientRect();
 
-  /* left text */
-  name.style.left = rect.left + "px";
-  name.style.top = rect.bottom + GAP_PX + "px";
+  const y = rect.bottom + GAP_PX;
 
-  /* right text */
+  name.style.left = rect.left + "px";
+  name.style.top = y + "px";
+
   copyright.style.right = (window.innerWidth - rect.right) + "px";
-  copyright.style.top = rect.bottom + GAP_PX + "px";
+  copyright.style.top = y + "px";
 
   name.style.opacity = "1";
   copyright.style.opacity = "1";
 }
 
 function initDesktopAlignment() {
-
   if (!isDesktop()) return;
 
   const img = document.querySelector(".bgimg");
@@ -42,22 +39,13 @@ function initDesktopAlignment() {
 
   const run = () => requestAnimationFrame(positionDesktopText);
 
-  if (img.complete) {
-    run();
-  } else {
-    img.addEventListener("load", run, { once: true });
-  }
-
+  if (img.complete) run();
+  else img.addEventListener("load", run, { once: true });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-
   setYear();
-
-  if (!isDesktop()) return;
-
   initDesktopAlignment();
-
 });
 
 window.addEventListener("resize", positionDesktopText);
