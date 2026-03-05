@@ -29,8 +29,8 @@ html, body {
 
 /* Desktop framed image */
 .bgimg {
-  max-width: calc(100vw - 160px);
-  max-height: calc(100vh - 160px);
+  max-width: calc(100vw - 12vw);
+  max-height: calc(100vh - 12vh);
 
   width: auto;
   height: auto;
@@ -170,4 +170,5 @@ body {
   }
 
 }
+
 
