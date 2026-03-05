@@ -1,6 +1,6 @@
 // script.js
 
-const GAP_PX = 4; // <<< CHANGE THIS to control distance from image bottom (e.g. 4, 8, 12, 16)
+const GAP_PX = 8; // <<< CHANGE THIS to control distance from image bottom (e.g. 4, 8, 12, 16)
 
 function isDesktop() {
   return window.innerWidth >= 769;
@@ -64,3 +64,4 @@ window.addEventListener("resize", () => {
   if (!isDesktop()) return;
   positionDesktopText();
 });
+
