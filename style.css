@@ -176,17 +176,18 @@ body {
 
   .name {
     position: fixed;
-    bottom: calc((100vh - (100vh - 8vh)) / 2);
-    left: calc((100vw - (100vw - 8vw)) / 2);
+    bottom: 18px;
+    left: 0;
   }
 
   .copyright {
     position: fixed;
-    bottom: calc((100vh - (100vh - 8vh)) / 2);
-    right: calc((100vw - (100vw - 8vw)) / 2);
+    bottom: 18px;
+    right: 0;
     left: auto;
     transform: none;
     text-align: right;
   }
 
 }
+
