@@ -21,21 +21,23 @@ html, body {
   background: #000;
 
   display: flex;
-  align-items: center;     /* vertical center */
-  justify-content: center; /* horizontal center */
+  align-items: center;
+  justify-content: center;
 
   z-index: 0;
 }
 
-/* Desktop: framed image (museum frame) */
+/* Desktop framed image */
+
 .bgimg {
   display: block;
-
-  max-width: calc(100vw - 8vw);
-  max-height: calc(100vh - 8vh);
+  margin: auto;
 
   width: auto;
   height: auto;
+
+  max-width: min(92vw, 1800px);
+  max-height: min(92vh, 1200px);
 
   object-fit: contain;
 
@@ -47,11 +49,11 @@ html, body {
 /* ========================= */
 
 body {
-  color: #ffffff; /* white */
+  color: #ffffff;
 }
 
 /* ========================= */
-/* Foreground layout (MOBILE DEFAULT) */
+/* Layout */
 /* ========================= */
 
 .wrap {
@@ -73,13 +75,12 @@ body {
 }
 
 /* ========================= */
-/* Name (mail link) */
+/* Name */
 /* ========================= */
 
 .name {
   font-family: "Courier Prime", monospace;
   font-weight: 400;
-  text-shadow: 0 0 6px rgba(57,255,20,0.35);
   font-size: clamp(18px, 5vw, 32px);
   letter-spacing: 1px;
   line-height: 1;
@@ -88,15 +89,15 @@ body {
   text-decoration: none;
   cursor: pointer;
 
-  text-shadow: 0 0 12px rgba(57,255,20,0.4);
   transition: color 0.2s ease;
 }
 
-.name:hover { color: #ff99c0; }
-.name:visited { color: #ffffff; }
+.name:hover {
+  color: #ff00e6;
+}
 
 /* ========================= */
-/* Copyright */
+/* Footer */
 /* ========================= */
 
 .copyright {
@@ -111,44 +112,36 @@ body {
   font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
   font-size: 14px;
   font-weight: 600;
-  opacity: 0.9;
 
-  color: #ffffff; /* always white */
+  color: #ffffff;
 }
 
 /* ========================= */
-/* Desktop: JS-positioned text (NO JUMP) */
+/* Desktop positioning */
 /* ========================= */
 
 @media (min-width: 769px) {
 
-  /* Hide until JS positions them */
   .name,
   .copyright {
-    opacity: 0;
-    will-change: left, right, top, opacity;
-  }
-
-  /* Desktop will be positioned by JS using top + left/right */
-  .name {
     position: fixed;
-    left: 0;
     top: 0;
+    opacity: 0; /* prevents jump before JS alignment */
     transform: none;
   }
+
+  .name { left: 0; }
 
   .copyright {
-    position: fixed;
     right: 0;
-    top: 0;
     left: auto;
-    transform: none;
     text-align: right;
   }
+
 }
 
 /* ========================= */
-/* Mobile portrait: fullscreen background image */
+/* Mobile portrait */
 /* ========================= */
 
 @media (max-width: 768px) {
@@ -160,14 +153,15 @@ body {
     height: 100vh;
     max-width: none;
     max-height: none;
-    object-fit: cover; /* fullscreen, may crop */
+
+    object-fit: cover;
   }
 
   .name {
-    font-size: clamp(20px, 6vw, 28px);
     color: #39ff14;
+    font-size: clamp(20px, 6vw, 28px);
   }
-  
+
   .name:hover {
     color: #ff00e6;
   }
@@ -176,10 +170,11 @@ body {
     bottom: 14px;
     font-size: 12px;
   }
+
 }
 
 /* ========================= */
-/* Mobile landscape: fullscreen background image */
+/* Mobile landscape */
 /* ========================= */
 
 @media (max-width: 932px) and (orientation: landscape) {
@@ -191,14 +186,15 @@ body {
     height: 100vh;
     max-width: none;
     max-height: none;
+
     object-fit: cover;
   }
 
   .name {
-    font-size: clamp(18px, 5vw, 24px);
     color: #39ff14;
+    font-size: clamp(18px, 5vw, 24px);
   }
-  
+
   .name:hover {
     color: #ff00e6;
   }
@@ -207,7 +203,5 @@ body {
     bottom: 10px;
     font-size: 12px;
   }
+
 }
-
-
-
