@@ -21,14 +21,16 @@ html, body {
   background: #000;
 
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: center;     /* vertical center */
+  justify-content: center; /* horizontal center */
 
   z-index: 0;
 }
 
 /* Desktop: framed image (museum frame) */
 .bgimg {
+  display: block;
+
   max-width: calc(100vw - 8vw);
   max-height: calc(100vh - 8vh);
 
@@ -206,5 +208,6 @@ body {
     font-size: 12px;
   }
 }
+
 
 
