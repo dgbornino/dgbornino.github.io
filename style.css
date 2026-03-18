@@ -19,7 +19,6 @@ html, body {
   align-items: center;
   justify-content: center;
   z-index: 0;
-  padding-bottom: 65px;
 }
 /* Desktop framed image */
 .bgimg {
