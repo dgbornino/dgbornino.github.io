@@ -9,13 +9,34 @@ html, body {
   overflow: hidden;
 }
 /* ========================= */
-/* Background */
+/* Background frame system */
 /* ========================= */
 .bg {
   position: fixed;
   inset: 0;
   background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: 0;
+  padding-bottom: 8vh;
+}
+/* Desktop framed image */
+.bgimg {
+  display: block;
+  margin: auto;
+  width: auto;
+  height: auto;
+  max-width: min(92vw, 1800px);
+  max-height: calc(100vh - 160px);
+  object-fit: contain;
+  filter: contrast(1.15) saturate(1.05);
+}
+/* ========================= */
+/* Base */
+/* ========================= */
+body {
+  color: #ffffff;
 }
 /* ========================= */
 /* Layout */
@@ -25,34 +46,14 @@ html, body {
   inset: 0;
   z-index: 1;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 4vh 4vw;
+  text-align: center;
 }
-/* ========================= */
-/* Image */
-/* ========================= */
-.bgimg {
-  display: block;
-  width: auto;
-  height: auto;
-  max-width: min(92vw, 1800px);
-  max-height: 84vh;
-  object-fit: contain;
-  filter: contrast(1.15) saturate(1.05);
-  flex-shrink: 1;
-}
-/* ========================= */
-/* Text row */
-/* ========================= */
-.textrow {
-  width: 100%;
+.center {
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  padding-top: 4vh;
-  max-width: min(92vw, 1800px);
+  flex-direction: column;
+  align-items: center;
 }
 /* ========================= */
 /* Name */
@@ -72,14 +73,37 @@ html, body {
   color: #ff00e6;
 }
 /* ========================= */
-/* Copyright */
+/* Footer */
 /* ========================= */
 .copyright {
+  position: fixed;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  text-align: center;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
   font-size: 14px;
   font-weight: 600;
   color: #ffffff;
-  text-align: right;
+}
+/* ========================= */
+/* Desktop positioning */
+/* ========================= */
+@media (min-width: 769px) {
+  .name,
+  .copyright {
+    position: fixed;
+    top: 0;
+    opacity: 0;
+    transform: none;
+  }
+  .name { left: 0; }
+  .copyright {
+    right: 0;
+    left: auto;
+    text-align: right;
+  }
 }
 /* ========================= */
 /* Mobile portrait */
@@ -87,28 +111,23 @@ html, body {
 @media (max-width: 768px) {
   .bg { display: block; }
   .bgimg {
-    position: fixed;
-    inset: 0;
     width: 100vw;
     height: 100vh;
     max-width: none;
     max-height: none;
     object-fit: cover;
   }
-  .textrow {
-    position: fixed;
-    bottom: 14px;
-    left: 0;
-    right: 0;
-    padding: 0 16px;
-    max-width: none;
-  }
   .name {
     color: #39ff14;
     font-size: clamp(20px, 6vw, 28px);
   }
-  .name:hover { color: #ff00e6; }
-  .copyright { font-size: 12px; }
+  .name:hover {
+    color: #ff00e6;
+  }
+  .copyright {
+    bottom: 14px;
+    font-size: 12px;
+  }
 }
 /* ========================= */
 /* Mobile landscape */
@@ -116,26 +135,21 @@ html, body {
 @media (max-width: 932px) and (orientation: landscape) {
   .bg { display: block; }
   .bgimg {
-    position: fixed;
-    inset: 0;
     width: 100vw;
     height: 100vh;
     max-width: none;
     max-height: none;
     object-fit: cover;
   }
-  .textrow {
-    position: fixed;
-    bottom: 10px;
-    left: 0;
-    right: 0;
-    padding: 0 16px;
-    max-width: none;
-  }
   .name {
     color: #39ff14;
     font-size: clamp(18px, 5vw, 24px);
   }
-  .name:hover { color: #ff00e6; }
-  .copyright { font-size: 12px; }
+  .name:hover {
+    color: #ff00e6;
+  }
+  .copyright {
+    bottom: 10px;
+    font-size: 12px;
+  }
 }
