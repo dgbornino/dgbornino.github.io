@@ -19,17 +19,18 @@ html, body {
   align-items: center;
   justify-content: center;
   z-index: 0;
-}
-
-.bg {
-  position: fixed;
-  inset: 0;
-  background: #000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 0;
   padding-bottom: 65px;
+}
+/* Desktop framed image */
+.bgimg {
+  display: block;
+  margin: auto;
+  width: auto;
+  height: auto;
+  max-width: min(92vw, 1800px);
+  max-height: min(92vh, 1200px);
+  object-fit: contain;
+  filter: contrast(1.15) saturate(1.05);
 }
 /* ========================= */
 /* Base */
