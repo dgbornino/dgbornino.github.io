@@ -16,24 +16,28 @@ function positionDesktopText() {
   const copyright = document.querySelector(".copyright");
   if (!img || !name || !copyright) return;
 
-  const rect = img.getBoundingClientRect();
-  const textHeight = Math.max(name.offsetHeight, copyright.offsetHeight);
-  const totalHeight = rect.height + GAP_PX + textHeight;
-  const topOffset = (window.innerHeight - totalHeight) / 2;
+  // Reset first so we get the natural centered position
+  img.style.marginTop = '0px';
 
-  // Move image via margin-top to center the whole block
-  img.style.marginTop = (topOffset - rect.top + parseFloat(img.style.marginTop || 0)) + 'px';
-
-  // Recalculate after margin applied
   requestAnimationFrame(() => {
-    const r = img.getBoundingClientRect();
-    const textY = r.bottom + GAP_PX;
-    name.style.left = r.left + 'px';
-    name.style.top = textY + 'px';
-    copyright.style.right = (window.innerWidth - r.right) + 'px';
-    copyright.style.top = textY + 'px';
-    name.style.opacity = '1';
-    copyright.style.opacity = '1';
+    const rect = img.getBoundingClientRect();
+    const textHeight = Math.max(name.offsetHeight, copyright.offsetHeight);
+    const totalHeight = rect.height + GAP_PX + textHeight;
+    const topOffset = (window.innerHeight - totalHeight) / 2;
+    const shift = topOffset - rect.top;
+
+    img.style.marginTop = shift + 'px';
+
+    requestAnimationFrame(() => {
+      const r = img.getBoundingClientRect();
+      const textY = r.bottom + GAP_PX;
+      name.style.left = r.left + 'px';
+      name.style.top = textY + 'px';
+      copyright.style.right = (window.innerWidth - r.right) + 'px';
+      copyright.style.top = textY + 'px';
+      name.style.opacity = '1';
+      copyright.style.opacity = '1';
+    });
   });
 }
 
