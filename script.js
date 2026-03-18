@@ -21,20 +21,20 @@ function positionDesktopText() {
   const totalHeight = rect.height + GAP_PX + textHeight;
   const topOffset = (window.innerHeight - totalHeight) / 2;
 
-  // Position image
-  img.style.position = 'fixed';
-  img.style.top = topOffset + 'px';
-  img.style.left = '50%';
-  img.style.transform = 'translateX(-50%)';
+  // Move image via margin-top to center the whole block
+  img.style.marginTop = (topOffset - rect.top + parseFloat(img.style.marginTop || 0)) + 'px';
 
-  // Position text
-  const textY = topOffset + rect.height + GAP_PX;
-  name.style.left = rect.left + 'px';
-  name.style.top = textY + 'px';
-  copyright.style.right = (window.innerWidth - rect.right) + 'px';
-  copyright.style.top = textY + 'px';
-  name.style.opacity = '1';
-  copyright.style.opacity = '1';
+  // Recalculate after margin applied
+  requestAnimationFrame(() => {
+    const r = img.getBoundingClientRect();
+    const textY = r.bottom + GAP_PX;
+    name.style.left = r.left + 'px';
+    name.style.top = textY + 'px';
+    copyright.style.right = (window.innerWidth - r.right) + 'px';
+    copyright.style.top = textY + 'px';
+    name.style.opacity = '1';
+    copyright.style.opacity = '1';
+  });
 }
 
 function initDesktopAlignment() {
