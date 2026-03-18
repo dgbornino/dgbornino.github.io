@@ -27,7 +27,7 @@ html, body {
   width: auto;
   height: auto;
   max-width: min(92vw, 1800px);
-  max-height: calc(100vh - 160px);
+  max-height: min(92vh, 1200px);
   object-fit: contain;
   filter: contrast(1.15) saturate(1.05);
 }
