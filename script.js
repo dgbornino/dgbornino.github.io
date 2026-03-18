@@ -1,4 +1,4 @@
-const GAP_PX = 32;
+const GAP_PX = 16;
 
 function isDesktop() {
   return window.innerWidth >= 769;
