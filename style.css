@@ -1,207 +1,155 @@
 /* ========================= */
 /* Reset */
 /* ========================= */
-
 * { box-sizing: border-box; }
-
 html, body {
   margin: 0;
   padding: 0;
   height: 100%;
   overflow: hidden;
 }
-
 /* ========================= */
 /* Background frame system */
 /* ========================= */
-
 .bg {
   position: fixed;
   inset: 0;
   background: #000;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   z-index: 0;
+  padding-bottom: 8vh;
 }
-
 /* Desktop framed image */
-
 .bgimg {
   display: block;
   margin: auto;
-
   width: auto;
   height: auto;
-
   max-width: min(92vw, 1800px);
-  max-height: min(92vh, 1200px);
-
+  max-height: calc(100vh - 80px);
   object-fit: contain;
-
   filter: contrast(1.15) saturate(1.05);
 }
-
 /* ========================= */
 /* Base */
 /* ========================= */
-
 body {
   color: #ffffff;
 }
-
 /* ========================= */
 /* Layout */
 /* ========================= */
-
 .wrap {
   position: fixed;
   inset: 0;
   z-index: 1;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   text-align: center;
 }
-
 .center {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
 /* ========================= */
 /* Name */
 /* ========================= */
-
 .name {
   font-family: "Courier Prime", monospace;
   font-weight: 400;
   font-size: clamp(18px, 5vw, 32px);
   letter-spacing: 1px;
   line-height: 1;
-
   color: #ffffff;
   text-decoration: none;
   cursor: pointer;
-
   transition: color 0.2s ease;
 }
-
 .name:hover {
   color: #ff00e6;
 }
-
 /* ========================= */
 /* Footer */
 /* ========================= */
-
 .copyright {
   position: fixed;
   bottom: 18px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1;
-
   text-align: center;
-
   font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
   font-size: 14px;
   font-weight: 600;
-
   color: #ffffff;
 }
-
 /* ========================= */
 /* Desktop positioning */
 /* ========================= */
-
 @media (min-width: 769px) {
-
   .name,
   .copyright {
     position: fixed;
     top: 0;
-    opacity: 0; /* prevents jump before JS alignment */
+    opacity: 0;
     transform: none;
   }
-
   .name { left: 0; }
-
   .copyright {
     right: 0;
     left: auto;
     text-align: right;
   }
-
 }
-
 /* ========================= */
 /* Mobile portrait */
 /* ========================= */
-
 @media (max-width: 768px) {
-
   .bg { display: block; }
-
   .bgimg {
     width: 100vw;
     height: 100vh;
     max-width: none;
     max-height: none;
-
     object-fit: cover;
   }
-
   .name {
     color: #39ff14;
     font-size: clamp(20px, 6vw, 28px);
   }
-
   .name:hover {
     color: #ff00e6;
   }
-
   .copyright {
     bottom: 14px;
     font-size: 12px;
   }
-
 }
-
 /* ========================= */
 /* Mobile landscape */
 /* ========================= */
-
 @media (max-width: 932px) and (orientation: landscape) {
-
   .bg { display: block; }
-
   .bgimg {
     width: 100vw;
     height: 100vh;
     max-width: none;
     max-height: none;
-
     object-fit: cover;
   }
-
   .name {
     color: #39ff14;
     font-size: clamp(18px, 5vw, 24px);
   }
-
   .name:hover {
     color: #ff00e6;
   }
-
   .copyright {
     bottom: 10px;
     font-size: 12px;
   }
-
 }
